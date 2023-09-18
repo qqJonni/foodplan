@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
-from users.forms import UserLoginForm, UserRegistrationForm
+from users.forms import UserLoginForm, UserRegistrationForm, UserLkForm
 from django.contrib import auth
 from django.urls import reverse
+from users.models import User
 
 
 def login(request):
@@ -13,7 +14,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('users:lk'))
     else:
         form = UserLoginForm()
     context = {
@@ -24,8 +25,17 @@ def login(request):
 
 
 def lk(request):
+    if request.method == 'POST':
+        form = UserLkForm(instance=request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:lk'))
+    else:
+        form = UserLkForm(instance=request.user)
     context = {
-        'title': 'Foodplan 2021 - Меню на неделю FOODPLAN'
+        'title': 'Foodplan 2021 - Меню на неделю FOODPLAN',
+        'form': form,
+        'username': request.user.username
     }
     return render(request, 'users/lk.html', context)
 
