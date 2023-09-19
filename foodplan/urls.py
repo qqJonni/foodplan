@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('food_card.urls')),
+    path("recipe<int:id>/", include('food_card.urls')),
     path('', include('users.urls', namespace='users'))
 ]
 
