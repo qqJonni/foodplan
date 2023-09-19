@@ -13,6 +13,11 @@ body {
     background-color: #F5F5F5;
 }
 
+.button-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .foodplan_green {
     color: #91B93E;
 }
