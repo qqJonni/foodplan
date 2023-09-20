@@ -33,3 +33,7 @@ class UserLkForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2', 'image')
+
+
+class SubscriptionForm(forms.ModelForm):
+    pass

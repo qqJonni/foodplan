@@ -53,3 +53,8 @@ def registration(request):
         'form': form
     }
     return render(request, 'users/registration.html', context)
+
+
+def order(request):
+
+    return render(request, 'users/order.html', context={})
