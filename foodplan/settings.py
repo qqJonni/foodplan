@@ -9,23 +9,21 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+from environs import Env
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+env = Env()
+env.read_env()
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+DEBUG = env.bool('DEBUG', False)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-xwjeb^4s%%(lt!xggx$($y-p2v*%^)p-fvj$p926nvq45fq#ok"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['*'])
 
 
 # Application definition
@@ -53,10 +51,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "foodplan.urls"
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_ROOT = ''
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATE_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -117,13 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
-STATICFILES_DIRS = (
-    BASE_DIR / "static",
-)
+STATIC_URL = "static/"
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -134,9 +136,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.User'
 
-# Stripe
 
-STRIPE_PUBLIC_KEY = 'pk_test_51NgriDIOnXKDlGzldG7wK3zoUS1TCOcVIUpMDphHhDtmXWnDB2rTD4a8vNvxYe2yT6H87otIC4xyX2g0tjhDbIAT004cKyJCMP'
-STRIPE_SECRET_KEY = 'sk_test_51NgriDIOnXKDlGzlkjejAjZXpilGVKcTvW9B63uLZAW81UP9jPK9jbSKwbkMe8QjwO552KQk2i28rRhyHQhTrsrs00GIgIOeLY'
 
 
