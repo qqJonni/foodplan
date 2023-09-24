@@ -19,7 +19,7 @@
                      <img src="{%  static 'img/logo.8d8f24edbb5f.svg' %}" height="55" width="189" alt="">
                  </a>
                  <h3 class="text-secondary mt-2 me-2">Стоимость: 1250₽</h3>
-                 <button form="order" type="submit" class="btn shadow-none btn-sm btn-outline-success foodplan_green foodplan__border_green">Оплатить</button>
+{#                 <button form="order" type="submit" class="btn shadow-none btn-sm btn-outline-success foodplan_green foodplan__border_green">Оплатить</button>#}
             </div>
         </nav>
     </header>
@@ -173,18 +173,31 @@
                 </table>
                 <button type="submit" id="TableSubmit" class="d-none"></button>
                 </form>
-                <form class="card d-flex flex-row align-items-baseline mb-5 p-3 foodplan__bg_grey">
-                    <label for="exampleInputPassword1" class="form-label me-2">Промокод</label>
-                    <input type="password" class="form-control me-2" id="password">
-                    <button type="submit" class="btn shadow-none btn-outline-success foodplan_green foodplan__border_green">Применить</button>
-                </form>
-                <div class="d-flex justify-content-center my-5" href="https://testgw.paykeeper.ru">
-                    <button form="order" type="submit" class="btn shadow-none btn-outline-success foodplan_green foodplan__border_green w-50">Оплатить</button>
-                </div>
+{#                <form class="card d-flex flex-row align-items-baseline mb-5 p-3 foodplan__bg_grey">#}
+{#                    <label for="exampleInputPassword1" class="form-label me-2">Промокод</label>#}
+{#                    <input type="password" class="form-control me-2" id="password">#}
+{#                    <button type="submit" class="btn shadow-none btn-outline-success foodplan_green foodplan__border_green">Применить</button>#}
+{#                </form>#}
+                 <form method='POST' action='https://demo.paykeeper.ru/create/' >
+                     <input type='text' name='sum' value='1250₽'/> <br />
+{#                <div class="d-flex justify-content-center my-5" href="https://demo.paykeeper.ru/create/">#}
+{#                    <button form="order" type="submit" class="btn shadow-none btn-outline-success foodplan_green foodplan__border_green w-50">Оплатить</button>#}
+{#                </div>#}
+                     <input type='submit' class="btn shadow-none btn-outline-success foodplan_green foodplan__border_green w-50 d-flex justify-content-center my-5" value='Перейти к оплате' />
+                     </form>
 
             </div>
         </section>
     </main>
+{#     <form method='POST' action='https://demo.paykeeper.ru/create/' >#}
+{#  Введите сумму оплаты:#}
+{#    <input type='text' name='sum' value='100'/> <br />#}
+{#  Введите номер заказа:#}
+{#    <input type='text' name='orderid' value='123456'/> <br />#}
+{#  Введите название услуги:#}
+{#    <input type='text' name='service_name' value='Тестовая оплата'/> <br />#}
+{#  <input type='submit' value='Перейти к оплате' />#}
+{#</form>#}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
