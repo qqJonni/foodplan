@@ -133,3 +133,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Users
 
 AUTH_USER_MODEL = 'users.User'
+
+# Stripe
+
+STRIPE_PUBLIC_KEY = 'pk_test_51NgriDIOnXKDlGzldG7wK3zoUS1TCOcVIUpMDphHhDtmXWnDB2rTD4a8vNvxYe2yT6H87otIC4xyX2g0tjhDbIAT004cKyJCMP'
+STRIPE_SECRET_KEY = 'sk_test_51NgriDIOnXKDlGzlkjejAjZXpilGVKcTvW9B63uLZAW81UP9jPK9jbSKwbkMe8QjwO552KQk2i28rRhyHQhTrsrs00GIgIOeLY'
+
+

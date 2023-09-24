@@ -12,7 +12,9 @@
                             Вы получаете рецепты + список продуктов.<br>
                             Больше не нужно думать, что готовить.</h4>
                         <div class="d-block mt-3">
-                            <button class="btn shadow-none btn-outline-success foodplan_green foodplan__border_green">Хочу попробовать</button>
+                            <a class="navbar-brand" href="{% url 'users:create_order' %}">
+                                 <button class="btn btn-outline-success shadow-none foodplan_green foodplan__border_green">Хочу попробовать</button>
+                             </a>
                         </div>
                     </div>
                 </div>
@@ -222,7 +224,7 @@
                 <img src="{% static 'img/vk.png' %}" height="40" width="auto" alt="">
             </a>
             <div>
-                <a href="#" class="link-dark mx-1" style="text-decoration: none;"><b>Виды меню</b></a>
+                <a href="{% url 'users:create_order' %}" class="link-dark mx-1" style="text-decoration: none;"><b>Виды меню</b></a>
                 <a href="https://foodplan.ru/blog/" class="link-dark mx-1" style="text-decoration: none;"><b>Блог</b></a>
                 <a href="https://foodplan.ru/contacts.php" class="link-dark mx-1" style="text-decoration: none;"><b>Контакты</b></a>
             </div>
